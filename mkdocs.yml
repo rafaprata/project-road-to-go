@@ -3,7 +3,7 @@ site_url: https://localhost
 theme:
   name: material
   palette: 
-    scheme: default
+    scheme: slate
     primary: blue
     accent: blue
   font:
@@ -32,7 +32,7 @@ plugins:
   - blog:
       enabled: true
       # blog_dir: blog
-      # blog_toc: false
+      blog_toc: true
       # post_dir: "{blog}/posts"
       # post_url_max_categories: 1
       # post_slugify_separator: "-"

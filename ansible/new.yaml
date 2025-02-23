@@ -1,0 +1,31 @@
+---
+- name: Create a new post
+  hosts: localhost
+  tasks:
+    - block:
+        - name: Create a new Post
+          vars:
+            role_action: "{{ mkdocs_item.0 }}"
+          include_role:
+            name: "{{ mkdocs_item.1 }}"
+            apply:
+              tags:
+                - "{{ mkdocs_item.1 }}"
+                # - "{{ mkdocs_item.0 }}"
+                - post
+          tags:
+            - post
+          with_nested:
+            - ["generate"]
+            - ["post"]
+          loop_control:
+            loop_var: "mkdocs_item"
+          
+    
+
+# ---
+# - name: Executar minha role de exemplo
+#   hosts: servidores
+#   become: yes  # Isso é usado para escalar privilégios, se necessário
+#   roles:
+#     - minha_role

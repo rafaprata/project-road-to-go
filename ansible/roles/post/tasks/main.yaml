@@ -1,0 +1,6 @@
+---
+- ansible.builtin.include_tasks: "{{ role_action }}.yaml"
+  when:
+    - role_action in ['generate']
+  tags:
+    - post

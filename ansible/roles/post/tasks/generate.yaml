@@ -1,0 +1,30 @@
+---
+- name: Define date
+  ansible.builtin.set_fact:
+    post_date: "{{ ansible_date_time.date }}"
+
+- name: User input | Author
+  ansible.builtin.pause:
+    prompt: Qual é o autor do texto?
+    echo: true
+  register: prompted_input
+  no_log: false
+
+- name: User input | Set Author
+  ansible.builtin.set_fact:
+    post_authors: ["{{ prompted_input.user_input }}"]
+
+- name: User input | Title
+  ansible.builtin.pause:
+    prompt: Qual é o titulo do texto?
+    echo: true
+  register: prompted_input
+  no_log: false
+
+- name: User input | Set Title
+  ansible.builtin.set_fact:
+    post_title: "{{ prompted_input.user_input | default('Title', true) }}"
+
+- name: Set 
+- debug:
+    var: post_title
